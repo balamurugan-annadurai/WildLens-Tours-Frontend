@@ -1,0 +1,28 @@
+import React from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Home from './Components/Sections/Home'
+import "./App.css"
+import Login from './Components/Auth/Login'
+import SignUp from './Components/Auth/SignUp'
+
+const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element:<Home/>
+    },
+    {
+      path: "/login",
+      element:<Login/>
+    },
+    {
+      path: "/signup",
+      element:<SignUp/>
+    }
+  ])
+  return (
+    <RouterProvider router={router}/>
+  )
+}
+
+export default App
