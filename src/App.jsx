@@ -4,6 +4,8 @@ import Home from './Components/Sections/Home'
 import "./App.css"
 import Login from './Components/Auth/Login'
 import SignUp from './Components/Auth/SignUp'
+import ForgotPassword from './Components/Auth/ForgotPassword'
+import AllToursDetails from './Components/Tours/AllToursDetails'
 
 const App = () => {
   const router = createBrowserRouter([
@@ -18,6 +20,14 @@ const App = () => {
     {
       path: "/signup",
       element:<SignUp/>
+    },
+    {
+      path: "/forgotpassword",
+      element:<ForgotPassword/>
+    },
+    {
+      path: "/alltours",
+      element:<AllToursDetails/>
     }
   ])
   return (

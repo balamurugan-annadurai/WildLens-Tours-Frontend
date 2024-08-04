@@ -7,12 +7,13 @@ import Slider from 'react-slick';
 const Recommendation = () => {
 
   var settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
+    dots: false,
+    infinite: true,
     slidesToShow: 3,
-    slidesToScroll: 4,
-    initialSlide: 0,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -41,15 +42,20 @@ const Recommendation = () => {
     ]
   }
 
-  return(
-    <div className = "recommendation-container" >
+  return (
+    <div className="recommendation-container" >
       <div className="container">
         <h1 className='white mt-5'>Most visited destinations</h1>
         <Slider {...settings}>
           <TourCard />
           <TourCard />
           <TourCard />
+          <TourCard />
+          <TourCard />
         </Slider>
+        <div className='d-flex justify-content-center'>
+          <button className='action-btn view-more'>View more</button>
+        </div>
       </div>
     </div >
   )

@@ -1,9 +1,13 @@
 import React from 'react'
+import "./Sections.css"
 import video from "../../assets/intro-video.mp4"
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Recommendation from './Recommendation';
+import About from './About';
+import Contact from './Contact';
+import Footer from '../Layouts/Footer';
 
 const Home = () => {
     const [isScroll, setIsScroll] = useState(false);
@@ -128,12 +132,14 @@ const Home = () => {
                 </video>
                 <div className='intro-details container'>
                     <h1 className='home-title'>Experience the thrill of wildlife with our expert-led tours</h1>
-                    <button className='action-btn'>Start Exploring</button>
+                    <button className='action-btn' onClick={() => navigate("/alltours")}>Start Exploring</button>
                 </div>
                 <div className="overlay"></div>
             </div>
-
-            <Recommendation/>
+            <About />
+            <Recommendation />
+            <Contact />
+            <Footer />
         </>
     )
 }
