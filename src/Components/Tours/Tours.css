@@ -1,7 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .outer-card-container {
     z-index: 10;
-    margin: 10px 0;
-    margin-right: 10px;
+    margin: 10px 5px 0 5px;
+    padding: 0;
 }
 
 .inner-card-container {
@@ -58,10 +64,53 @@
     margin: 10px 0 10px 10px;
     transition: 0.3s;
 }
-.exp-car-img-container{
-    height: 100vh;
+
+.header {
+    background-color: #193529;
+    height: 10vh;
 }
-.exp-car-img-container img{
-    width: 100%;
+
+.inner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 100%;
 }
+
+.return-btn {
+    padding: 5px 20px;
+    color: #193529;
+    border: 2px solid #e7ede9;
+    background-color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.filter-container {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .3);
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.filter {
+    padding: 5px 15px;
+    color: #193529;
+    border: 2px solid #e7ede9;
+    background-color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.header img {
+    width: 100%;
+}
+
+.tour-details h1 {}
