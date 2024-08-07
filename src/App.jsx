@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Components/Sections/Home'
 import "./App.css"
@@ -13,9 +13,45 @@ import DashboardUsers from './Components/AdminDashboard/DashboardUsers'
 import DashboardMarketing from './Components/AdminDashboard/DashboardMarketing'
 import DashboardTours from './Components/AdminDashboard/DashboardTours'
 import DashboardBookings from './Components/AdminDashboard/DashboardBookings'
+import AccountActivation from './Components/Auth/AccountActivation'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLogin, setToken } from './Slices/AuthSlice'
+import ResetPage from './Components/Auth/ResetPassword'
 // import Admin from './Components/Dashboard/Admin'
+import ReactLoading from 'react-loading';
+import axios from 'axios'
+import { setTours } from './Slices/TourSlice'
+
+
 
 const App = () => {
+
+  const [loading, setLoading] = useState(true);
+
+  const { login, token } = useSelector(state => state.auth);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const isLoggedIn = window.localStorage.getItem("isLoggedIn");
+    if (isLoggedIn != null) dispatch(setLogin(isLoggedIn))
+
+    const token = window.localStorage.getItem("token");
+    if (token != null) dispatch(setToken(token))
+
+    axios.get("/tour/alltours").then(res => {
+      try {
+        dispatch(setTours(res.data.tours));
+        setLoading(false);
+
+      } catch (error) {
+      console.log(error);
+      }
+    },[])
+
+  }, [login])
+
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -30,8 +66,16 @@ const App = () => {
       element: <SignUp />
     },
     {
+      path: "/activation/:token",
+      element: <AccountActivation />
+    },
+    {
       path: "/forgotpassword",
       element: <ForgotPassword />
+    },
+    {
+      path: "/resetpage/:verificationString",
+      element: <ResetPage />
     },
     {
       path: "/alltours",
@@ -41,7 +85,8 @@ const App = () => {
       path: "/details",
       element: <IndividualTourDetail />
     },
-    { path:"/dashboard",
+    {
+      path: "/dashboard",
       element: <Dashboard />,
       children: [
         {
@@ -50,27 +95,37 @@ const App = () => {
         },
         {
           path: 'users',
-          element: <DashboardUsers/>
+          element: <DashboardUsers />
         },
         {
           path: 'marketing',
-          element: <DashboardMarketing/>
+          element: <DashboardMarketing />
         },
         {
           path: 'tours',
-          element:<DashboardTours/>
+          element: <DashboardTours />
         },
         {
           path: 'bookings',
-          element:<DashboardBookings/>
+          element: <DashboardBookings />
         }
-        
+
       ]
     }
   ])
   return (
-    <RouterProvider router={router} />
+
+    <div>
+      {loading ? (
+        <div className="loading-container bg-white">
+          <ReactLoading type="spinningBubbles" color="#3F775A" />
+        </div>
+      ) : (
+        <RouterProvider router={router} />
+      )}
+    </div>
   )
+
 }
 
 export default App

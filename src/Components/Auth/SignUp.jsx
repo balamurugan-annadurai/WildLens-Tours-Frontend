@@ -6,10 +6,12 @@ import * as yup from 'yup'
 import { toast, Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactLoading from 'react-loading';
+import { useDispatch } from 'react-redux'
 
 const SignUp = () => {
     const [loading, setLoading] = useState(false);
     const [isRegistered, setIsResgistered] = useState(false);
+    const dispatch = useDispatch();
 
     // Initialize the navigate function for redirecting
     const navigate = useNavigate();
@@ -47,7 +49,7 @@ const SignUp = () => {
 
         onSubmit: (values) => { // Function to handle form submission
             setLoading(true);
-            axios.post("/register", values).then(res => { // POST call
+            axios.post("/user/register", values).then(res => { // POST call
                 setLoading(false);
                 if (res.data.status) {
                     formik.resetForm();
@@ -153,7 +155,7 @@ const SignUp = () => {
                         {
                             loading &&
                             <div className="loading-container">
-                                <ReactLoading type="spinningBubbles" color="#ed7632" />
+                                <ReactLoading type="spinningBubbles" color="#3F775A" />
                             </div>
                         }
                     </div>
@@ -161,7 +163,7 @@ const SignUp = () => {
                 ) :
 
                 (
-                    <div className='vh-100 d-flex justify-content-center align-items-center bg-color'>
+                    <div className='vh-100 bg d-flex justify-content-center align-items-center bg-color'>
                         <div className="outer-container">
                             <p className='title'>Verify your email</p>
                             <p className='forgot-password-text'>We have send a verification link to your email kindly verify to Activate your account</p>

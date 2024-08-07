@@ -113,4 +113,101 @@
     width: 100%;
 }
 
-.tour-details h1 {}
+.tour-details h2 {
+    color: #28523E;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.ranthambore-container {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.ranthambore-container h1 {
+    font-size: 28px;
+    color: #fff;
+    background-color: #28523E;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #28523E;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 20px;
+    color: #28523E;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.intro-section,
+.highlights-section,
+.visit-info-section,
+.contact-section {
+    margin-bottom: 40px;
+}
+
+.highlight {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #4F4F4F;
+    margin-bottom: 15px;
+}
+
+ul li {
+    font-size: 16px;
+    color: #4F4F4F;
+}
+.img-container{
+    width: 50%;
+    margin-bottom: 40px;
+}
+.img-container img{
+    width: 100%;
+}
+@media (max-width: 768px) {
+    .img-container{
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}

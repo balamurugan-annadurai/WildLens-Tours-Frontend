@@ -39,7 +39,7 @@ const ForgotPassword = () => {
 
         onSubmit: (values) => { // Function to handle form submission
             setLoading(true);
-            axios.post("/forgotpassword", values).then(res => {
+            axios.post("/user/forgotpassword", values).then(res => {
                 setLoading(false);
                 if (res.data.message == "User not found") {
                     toast.error("User not registered"); // Notification
@@ -108,7 +108,7 @@ const ForgotPassword = () => {
                     {
                         loading &&
                         <div className="loading-container">
-                            <ReactLoading type="spinningBubbles" color="#ed7632" />
+                            <ReactLoading type="spinningBubbles" color="#3F775A" />
                         </div>
                     }
                 </div>

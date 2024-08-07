@@ -8,8 +8,15 @@ import Recommendation from './Recommendation';
 import About from './About';
 import Contact from './Contact';
 import Footer from '../Layouts/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogin } from '../../Slices/AuthSlice';
 
 const Home = () => {
+
+    const { login, token } = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+
+
     const [isScroll, setIsScroll] = useState(false);
     const navigate = useNavigate();
 
@@ -80,8 +87,16 @@ const Home = () => {
         navigate("/signup");
     }
 
-    const login = () => {
+    const handleLogin = () => {
         navigate("/login");
+    }
+    const handleLogout = () => {
+        localStorage.clear();
+        dispatch(setLogin(false));
+    }
+
+    const handleMyProfile = () => {
+
     }
     return (
         <>
@@ -107,17 +122,35 @@ const Home = () => {
                             <li><a href="#about" className='white'>About</a></li>
                             <li><a href="#contact" className='white'>Contact</a></li>
                         </ul>
-                        <div className="login-signUp-buttons">
-                            <button className='login-button' onClick={login}>Login</button>
-                            <button className='signup-button' onClick={signUp}>Signup</button>
-                        </div>
+                        {
+                            !login
+                                ?
+                                <div className="login-signUp-buttons">
+                                    <button className='login-button' onClick={handleLogin}>Login</button>
+                                    <button className='signup-button' onClick={signUp}>Signup</button>
+                                </div>
+                                :
+                                <div className="login-signUp-buttons">
+                                    <button className='login-button' onClick={handleLogout}>Logout</button>
+                                    <button className='signup-button' onClick={handleMyProfile}>My Profile</button>
+                                </div>
+                        }
                     </div>
                     <div className="mobile-navbar">
                         <i className='bx bx-menu menu'></i>
-                        <div className="login-signUp-buttons">
-                            <button className='login-button' onClick={login}>Login</button>
-                            <button className='signup-button' onClick={signUp}>Signup</button>
-                        </div>
+                        {
+                            !login
+                                ?
+                                <div className="login-signUp-buttons">
+                                    <button className='login-button' onClick={handleLogin}>Login</button>
+                                    <button className='signup-button' onClick={signUp}>Signup</button>
+                                </div>
+                                :
+                                <div className="login-signUp-buttons">
+                                    <button className='login-button' onClick={handleLogout}>Logout</button>
+                                    <button className='signup-button' onClick={handleMyProfile}>My Profile</button>
+                                </div>
+                        }
                     </div>
                 </nav>
             </header>

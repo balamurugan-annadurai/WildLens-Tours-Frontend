@@ -13,7 +13,7 @@ const SuccessMsg = () => {
     }
 
     return (
-        <div className='vh-100 d-flex justify-content-center align-items-center bg-color'>
+        <div className='vh-100 bg d-flex justify-content-center align-items-center bg-color'>
             <div className="outer-container">
                 <p className='title'>Verify your email</p>
                 <p className='forgot-password-text'>We have send a verification link to your email kindly verify to reset your password</p>

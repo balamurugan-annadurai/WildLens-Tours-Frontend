@@ -3,8 +3,11 @@ import TourCard from '../Tours/TourCard'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
+import { useSelector } from 'react-redux';
 
 const Recommendation = () => {
+
+  const { tours } = useSelector(state => state.tour);
 
   var settings = {
     dots: false,
@@ -47,11 +50,11 @@ const Recommendation = () => {
       <div className="container">
         <h1 className='white mt-5'>Most visited destinations</h1>
         <Slider {...settings}>
-          <TourCard />
-          <TourCard />
-          <TourCard />
-          <TourCard />
-          <TourCard />
+          {
+            tours.map(tour => (
+                <TourCard tour={tour} />
+            ))
+          }
         </Slider>
         <div className='d-flex justify-content-center'>
           <button className='action-btn view-more'>View more</button>

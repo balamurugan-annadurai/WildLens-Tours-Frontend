@@ -2,9 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import TourCard from './TourCard';
 import Footer from './../Layouts/Footer';
+import { useSelector } from 'react-redux';
 
 const AllToursDetails = () => {
     const navigate = useNavigate();
+
+    const { tours } = useSelector(state => state.tour);
+
     return (
         <>
             <div className='header'>
@@ -41,24 +45,13 @@ const AllToursDetails = () => {
 
             <div className="tours container mb-3">
                 <div className="row justify-content-center">
-                    <div className="col-xl-4 col-12 col-lg-4 col-md-6 col-sm-6">
-                        <TourCard />
-                    </div>
-                    <div className="col-xl-4 col-12 col-lg-4 col-md-6 col-sm-6">
-                        <TourCard />
-                    </div>
-                    <div className="col-xl-4 col-12 col-lg-4 col-md-6 col-sm-6">
-                        <TourCard />
-                    </div>
-                    <div className="col-xl-4 col-12 col-lg-4 col-md-6 col-sm-6">
-                        <TourCard />
-                    </div>
-                    <div className="col-xl-4 col-12 col-lg-4 col-md-6 col-sm-6">
-                        <TourCard />
-                    </div>
-                    <div className="col-xl-4 col-12 col-lg-4 col-md-6 col-sm-6">
-                        <TourCard />
-                    </div>
+                    {
+                        tours.map(tour => (
+                            <div className="col-xl-4 col-12 col-lg-4 col-md-6 col-sm-6">
+                                <TourCard tour={tour} />
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
             <Footer />
