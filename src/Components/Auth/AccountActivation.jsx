@@ -22,7 +22,7 @@ const AccountActivation = () => {
     }, [status])
     return (
         <div className="loading-container">
-            <ReactLoading type="spinningBubbles" color="#ed7632" />
+            <ReactLoading type="spinningBubbles" color="#3F775A" />
         </div>
     )
 }

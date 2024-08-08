@@ -45,8 +45,14 @@ const LogInPage = () => {
         }),
 
         onSubmit: (values) => {   // Function to handle form submission
+
+            const userDetails = {
+                email: values.email.trim(),
+                password: values.password.trim()
+            }
+
             setLoading(true);
-            axios.post("/user/login", values).then(res => {
+            axios.post("/user/login", userDetails).then(res => {
                 setLoading(false);
                 if (res.data.message == "Password matched") {
                     formik.resetForm();

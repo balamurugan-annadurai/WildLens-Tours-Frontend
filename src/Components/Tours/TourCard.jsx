@@ -2,8 +2,12 @@ import React from 'react'
 import "./Tours.css"
 import { useNavigate } from 'react-router-dom'
 
-const TourCard = ({tour}) => {
+const TourCard = ({ tour }) => {
     const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/details', { state: { tour } });
+    }
 
     return (
         <div className='outer-card-container'>
@@ -15,7 +19,7 @@ const TourCard = ({tour}) => {
                     <p>{tour.price} (<span className='days'>{tour.duration}</span>)</p>
                 </div>
                 <p className='mini-details'>{tour.shortDescription}</p>
-                <button className="card-button" onClick={()=>navigate("/details")}>Details</button>
+                <button className="card-button" onClick={handleClick}>Details</button>
             </div>
         </div>
     )

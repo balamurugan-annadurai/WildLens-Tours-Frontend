@@ -48,8 +48,16 @@ const SignUp = () => {
 
 
         onSubmit: (values) => { // Function to handle form submission
+
+            const userDetails = {
+                email: values.email.trim(),
+                firstName: values.firstName.trim(),
+                lastName: values.lastName.trim(),
+                password:values.password.trim()
+            }
+            
             setLoading(true);
-            axios.post("/user/register", values).then(res => { // POST call
+            axios.post("/user/register", userDetails).then(res => { // POST call
                 setLoading(false);
                 if (res.data.status) {
                     formik.resetForm();

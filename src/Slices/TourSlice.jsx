@@ -7,7 +7,7 @@ const tourSlice = createSlice({
     },
     reducers: {
         setTours: (state, action) => {
-            state.tours = [...action.payload];
+            state.tours = action.payload;
         }
     }
 })

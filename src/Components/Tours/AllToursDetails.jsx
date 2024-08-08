@@ -53,8 +53,10 @@ const AllToursDetails = () => {
                         ))
                     }
                 </div>
+                
             </div>
             <Footer />
+
         </>
     )
 }

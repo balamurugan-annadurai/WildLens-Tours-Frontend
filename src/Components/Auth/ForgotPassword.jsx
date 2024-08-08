@@ -38,8 +38,13 @@ const ForgotPassword = () => {
         }),
 
         onSubmit: (values) => { // Function to handle form submission
+
+            const userDetails = {
+                email: values.email.trim(),
+            }
+
             setLoading(true);
-            axios.post("/user/forgotpassword", values).then(res => {
+            axios.post("/user/forgotpassword", userDetails).then(res => {
                 setLoading(false);
                 if (res.data.message == "User not found") {
                     toast.error("User not registered"); // Notification

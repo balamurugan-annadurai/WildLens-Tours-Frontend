@@ -15,12 +15,15 @@ import DashboardTours from './Components/AdminDashboard/DashboardTours'
 import DashboardBookings from './Components/AdminDashboard/DashboardBookings'
 import AccountActivation from './Components/Auth/AccountActivation'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLogin, setToken } from './Slices/AuthSlice'
+import { setLogin, setToken, setUserDetails } from './Slices/AuthSlice'
 import ResetPage from './Components/Auth/ResetPassword'
 // import Admin from './Components/Dashboard/Admin'
 import ReactLoading from 'react-loading';
 import axios from 'axios'
 import { setTours } from './Slices/TourSlice'
+import UserProfile from './Components/Auth/UserProfile'
+import PreviousBookings from './Components/Auth/PreviousBookings';
+import UpcomingBookings from './Components/Auth/UpcomingBookings';
 
 
 
@@ -28,7 +31,7 @@ const App = () => {
 
   const [loading, setLoading] = useState(true);
 
-  const { login, token } = useSelector(state => state.auth);
+  const { login, token, userDetails } = useSelector(state => state.auth);
 
   const dispatch = useDispatch();
 
@@ -45,9 +48,9 @@ const App = () => {
         setLoading(false);
 
       } catch (error) {
-      console.log(error);
+        console.log(error);
       }
-    },[])
+    })
 
   }, [login])
 
@@ -64,6 +67,24 @@ const App = () => {
     {
       path: "/signup",
       element: <SignUp />
+    },
+    {
+      path: "/myprofile",
+      element: <UserProfile />,
+      children: [
+        {
+          index: true,
+          element: <PreviousBookings />
+        },
+        {
+          path: "previousbookings",
+          element: <PreviousBookings />
+        },
+        {
+          path: "upcomingbookings",
+          element: <UpcomingBookings />
+        }
+      ]
     },
     {
       path: "/activation/:token",
@@ -89,6 +110,10 @@ const App = () => {
       path: "/dashboard",
       element: <Dashboard />,
       children: [
+        {
+          index: true,
+          element: <DashboardHome />
+        },
         {
           path: 'home',
           element: <DashboardHome />

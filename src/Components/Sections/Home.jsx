@@ -96,7 +96,7 @@ const Home = () => {
     }
 
     const handleMyProfile = () => {
-
+        navigate("/myprofile");
     }
     return (
         <>
