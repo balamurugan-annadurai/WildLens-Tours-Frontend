@@ -15,23 +15,16 @@ const UserProfile = () => {
     const dispatch = useDispatch();
 
     const [activeLink, SetActivelink] = useState(true);
-    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        axios.post("/booking/getuserdetails", { token }).then(res => {
-            dispatch(setUserDetails(res.data.personalDetails));
-            setLoading(false);
-
-        }).catch(error => {
-            console.error('Error fetching user details:', error);
-        });
-    }, []);
-
+    const isObject = (value) => {
+        return typeof value === 'object' && value !== null && !Array.isArray(value);
+    };
+    
 
     return (
         <>
             {
-                loading ? (
+                (!(login && userDetails && isObject(userDetails.user)))? (
                     <div className="loading-container bg-white">
                         <ReactLoading type="spinningBubbles" color="#3F775A" />
                     </div>

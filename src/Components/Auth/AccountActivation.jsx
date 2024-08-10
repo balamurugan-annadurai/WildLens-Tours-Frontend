@@ -5,11 +5,16 @@ import ReactLoading from 'react-loading';
 
 const AccountActivation = () => {
     const { token } = useParams()
+    console.log(token);
     const navigate = useNavigate();
     const [status, setStatus] = useState(false);
 
     useEffect(() => {
-        axios.post("/user/activateaccount", { token }).then(res => {
+        axios.get("/user/activateaccount", {
+            headers: {
+                Authorization:`Bearer ${token}`
+            }
+        }).then(res => {
             if (res.data.message == "activated") {
                 setStatus(true);
                 navigate("/login");

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import Home from './Components/Sections/Home'
 import "./App.css"
 import Login from './Components/Auth/Login'
@@ -24,6 +24,7 @@ import { setTours } from './Slices/TourSlice'
 import UserProfile from './Components/Auth/UserProfile'
 import PreviousBookings from './Components/Auth/PreviousBookings';
 import UpcomingBookings from './Components/Auth/UpcomingBookings';
+import ProtectedRoute from './Components/AdminDashboard/ProtectedRoute'
 
 
 
@@ -42,6 +43,15 @@ const App = () => {
     const token = window.localStorage.getItem("token");
     if (token != null) dispatch(setToken(token))
 
+    if (login) {
+      axios.post("/booking/getuserdetails", { token }).then(res => {
+        dispatch(setUserDetails(res.data.personalDetails));
+
+      }).catch(error => {
+        console.error('Error fetching user details:', error);
+      });
+    }
+
     axios.get("/tour/alltours").then(res => {
       try {
         dispatch(setTours(res.data.tours));
@@ -54,11 +64,18 @@ const App = () => {
 
   }, [login])
 
+  const getRedirectElement = () => {
+    if (login && userDetails && userDetails.user) {
+      return userDetails.user.role === "admin" ? <Navigate to="/dashboard" /> : <Home />;
+    }
+    return <Home />;
+  };
 
+  
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home />
+      element: getRedirectElement()
     },
     {
       path: "/login",
@@ -108,7 +125,7 @@ const App = () => {
     },
     {
       path: "/dashboard",
-      element: <Dashboard />,
+      element: <ProtectedRoute element={<Dashboard />} role="admin" />,
       children: [
         {
           index: true,

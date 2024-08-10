@@ -2,7 +2,7 @@ import React from 'react'
 import "./Tours.css"
 import { useNavigate } from 'react-router-dom'
 
-const TourCard = ({tour}) => {
+const TourCard = ({ tour}) => {
     const navigate = useNavigate();
 
     const handleClick = () => {

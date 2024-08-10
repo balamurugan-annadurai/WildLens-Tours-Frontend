@@ -1,7 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Dashboard.css"
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../../Slices/AuthSlice';
 const Dashboard = () => {
+
+    const [activeLink, SetActivelink] = useState(true);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+
+    const handleLogout = () => {
+        localStorage.clear();
+        dispatch(setLogin(false));
+        navigate("/")
+    }
 
     return (
         <>
@@ -12,7 +25,7 @@ const Dashboard = () => {
                         <div className="logo">
                             <h1 className='d-flex align-items-center'><i className='bx bxs-leaf mx-2'></i>WildLens Tours</h1>
                         </div>
-                        <button className='return-btn'><i class='bx bxs-chevrons-left' ></i>Logout</button>
+                        <button className='return-btn' onClick={handleLogout}><i class='bx bxs-chevrons-left' ></i>Logout</button>
                     </div>
                 </div>
 
@@ -20,7 +33,7 @@ const Dashboard = () => {
                     <ul>
                         <li>
                             <NavLink to="home"
-                                className={({ isActive }) => (isActive ? 'active' : '')}
+                                className={activeLink ? "active" : ""}
                             >
                                 <i class='bx bxs-home' ></i>
                                 <div>Home</div>
@@ -28,7 +41,13 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <NavLink to="users"
-                                className={({ isActive }) => (isActive ? 'active' : '')}
+                                className={({ isActive }) => {
+
+                                    if (isActive) {
+                                        SetActivelink(false);
+                                    }
+                                    return isActive ? 'active' : ''
+                                }}
                             >
                                 <i class='bx bxs-user'></i>
                                 <div>Users</div>
@@ -36,7 +55,13 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <NavLink to="marketing"
-                                className={({ isActive }) => (isActive ? 'active' : '')}
+                                className={({ isActive }) => {
+
+                                    if (isActive) {
+                                        SetActivelink(false);
+                                    }
+                                    return isActive ? 'active' : ''
+                                }}
                             >
                                 <i class='bx bxs-envelope' ></i>
                                 <div>Marketing</div>
@@ -44,7 +69,13 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <NavLink to="tours"
-                                className={({ isActive }) => (isActive ? 'active' : '')}
+                                className={({ isActive }) => {
+
+                                    if (isActive) {
+                                        SetActivelink(false);
+                                    }
+                                    return isActive ? 'active' : ''
+                                }}
                             >
                                 <i class='bx bxs-plane-alt' ></i>
                                 <div>Tours</div>
@@ -52,7 +83,13 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <NavLink to="bookings"
-                                className={({ isActive }) => (isActive ? 'active' : '')}
+                                className={({ isActive }) => {
+
+                                    if (isActive) {
+                                        SetActivelink(false);
+                                    }
+                                    return isActive ? 'active' : ''
+                                }}
                             >
                                 <i class='bx bxs-book-alt'></i>
                                 <div>Bookings</div>
@@ -60,7 +97,13 @@ const Dashboard = () => {
                         </li>
                         <li>
                             <NavLink to="home"
-                                className={({ isActive }) => (isActive ? 'active' : '')}
+                                className={({ isActive }) => {
+
+                                    if (isActive) {
+                                        SetActivelink(false);
+                                    }
+                                    return isActive ? 'active' : ''
+                                }}
                             >
                                 <i class='bx bxs-message-dots' ></i>
                                 <div>Messages</div>
