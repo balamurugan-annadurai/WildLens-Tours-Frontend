@@ -25,6 +25,7 @@ import UserProfile from './Components/Auth/UserProfile'
 import PreviousBookings from './Components/Auth/PreviousBookings';
 import UpcomingBookings from './Components/Auth/UpcomingBookings';
 import ProtectedRoute from './Components/AdminDashboard/ProtectedRoute'
+import BookTour from './Components/Tours/BookTour'
 
 
 
@@ -33,7 +34,6 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   const { login, token, userDetails } = useSelector(state => state.auth);
-console.log(userDetails);
   const dispatch = useDispatch();
 
   useEffect(() => {

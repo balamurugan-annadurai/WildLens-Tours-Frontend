@@ -4,10 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Recommendation = () => {
     const { tours } = useSelector(state => state.tour);
     const { login, userDetails } = useSelector(state => state.auth);
+    const navigate = useNavigate();
 
     // Initialize variables
     let previousBookings = [];
@@ -90,7 +92,7 @@ const Recommendation = () => {
                     }
                 </Slider>
                 <div className='d-flex justify-content-center'>
-                    <button className='action-btn view-more'>View more</button>
+                    <button className='action-btn view-more' onClick={() => navigate("/alltours")}>View more</button>
                 </div>
             </div>
         </div>

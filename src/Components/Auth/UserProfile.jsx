@@ -19,12 +19,15 @@ const UserProfile = () => {
     const isObject = (value) => {
         return typeof value === 'object' && value !== null && !Array.isArray(value);
     };
-    
 
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to top when component mounts
+    })
+    
     return (
         <>
             {
-                (!(login && userDetails && isObject(userDetails.user)))? (
+                (!(login && userDetails && isObject(userDetails.user))) ? (
                     <div className="loading-container bg-white">
                         <ReactLoading type="spinningBubbles" color="#3F775A" />
                     </div>

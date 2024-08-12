@@ -156,20 +156,10 @@ const UserReview = ({ review, tourId, setLoading }) => {
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
+
             dispatch(setReview({ tourId, content, reviewId }));
             setLoading(false);
-            if (res.data.message == "success") {
-                toast.success("Review saved", {  // Notification
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    transition: Slide // Use Slide for right-side animation
-                });
-            }
+
         } catch (error) {
             console.error('Error updating review content:', error);
             // Optionally, revert the local state update if the API call fails

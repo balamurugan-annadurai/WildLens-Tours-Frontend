@@ -63,7 +63,7 @@ const LogInPage = () => {
                     dispatch(setToken(res.data.token));
                     window.localStorage.setItem("token", res.data.token);
 
-                    navigate("/");
+                    navigate(-1);
                     toast.success("Login successfull", {  // Notification
                         position: "top-right",
                         autoClose: 5000,

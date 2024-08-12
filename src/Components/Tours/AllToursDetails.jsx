@@ -9,7 +9,6 @@ const AllToursDetails = () => {
     const navigate = useNavigate();
 
     const { tours, filteredTours } = useSelector(state => state.tour);
-    console.log(tours);
     const [searchText, setSearchText] = useState("");
 
     const extractUniqueValues = (key) => [...new Set(tours.map(tour => tour[key]))];
@@ -31,7 +30,7 @@ const AllToursDetails = () => {
             setSelectedPrice(value);
             setSelectedLocation('');
             setSelectedSchedule("");
-            dispatch(filterTours(Number(value)));
+            value == "all" ? dispatch(filterTours(value)) : dispatch(filterTours(Number(value)))
         } else if (filterType === 'location') {
             setSelectedLocation(value);
             setSelectedPrice("");
@@ -54,6 +53,7 @@ const AllToursDetails = () => {
 
     useEffect(() => {
         dispatch(resetFilteredTours())
+        window.scrollTo(0, 0); // Scroll to top when component mounts
     }, [])
 
     return (
@@ -63,7 +63,7 @@ const AllToursDetails = () => {
                     <div className="logo">
                         <h1 className='d-flex align-items-center'><i className='bx bxs-leaf mx-2'></i>WildLens Tours</h1>
                     </div>
-                    <button className='return-btn' onClick={() => navigate("/")}><i class='bx bxs-chevrons-left' ></i>Home</button>
+                    <button className='return-btn' onClick={() => navigate(-1)}><i class='bx bxs-chevrons-left' ></i>Back</button>
                 </div>
             </div>
 
@@ -132,7 +132,7 @@ const AllToursDetails = () => {
                                 </div>
                             })
                             :
-                            <h3>No tours exist based on your filter</h3>
+                            <h3>No tours exist based on your search</h3>
                     }
                 </div>
 
