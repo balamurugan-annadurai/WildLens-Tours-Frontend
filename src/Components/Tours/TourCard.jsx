@@ -6,7 +6,8 @@ const TourCard = ({tour}) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/details', { state: { tour } });
+        const tourId = tour._id;
+        navigate('/details', { state: { tourId } });
     }
 
     return (

@@ -33,7 +33,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   const { login, token, userDetails } = useSelector(state => state.auth);
-
+console.log(userDetails);
   const dispatch = useDispatch();
 
   useEffect(() => {

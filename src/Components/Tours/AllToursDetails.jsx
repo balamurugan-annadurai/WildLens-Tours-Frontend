@@ -9,6 +9,7 @@ const AllToursDetails = () => {
     const navigate = useNavigate();
 
     const { tours, filteredTours } = useSelector(state => state.tour);
+    console.log(tours);
     const [searchText, setSearchText] = useState("");
 
     const extractUniqueValues = (key) => [...new Set(tours.map(tour => tour[key]))];
