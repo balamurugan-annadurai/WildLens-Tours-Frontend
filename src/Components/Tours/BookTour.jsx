@@ -82,6 +82,12 @@ const BookTour = ({ tour, setIsBooking }) => {
 
     return (
         <>
+            {
+                loading &&
+                <div className="loading-container">
+                    <ReactLoading type="spinningBubbles" color="#3F775A" />
+                </div>
+            }
             <div className='header'>
                 <div className="container inner-header">
                     <div className="logo">
@@ -168,12 +174,7 @@ const BookTour = ({ tour, setIsBooking }) => {
                     draggable
                     pauseOnHover
                 />
-                {
-                    loading &&
-                    <div className="loading-container">
-                        <ReactLoading type="spinningBubbles" color="#3F775A" />
-                    </div>
-                }
+
             </div>
         </>
     );
