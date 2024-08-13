@@ -4,12 +4,16 @@ const tourSlice = createSlice({
     name: "tours",
     initialState: {
         tours: [],
-        filteredTours: [] // Filtered tours
+        filteredTours: [], // Filtered tours
+        currentTourId: null,  // Add this line
     },
     reducers: {
         setTours: (state, action) => {
             state.tours = action.payload;
             state.filteredTours = action.payload;
+        },
+        setCurrentTourId(state, action) {
+            state.currentTourId = action.payload;  // Update this line
         },
         resetFilteredTours: (state, action) => {
             state.filteredTours = state.tours;
@@ -83,5 +87,5 @@ const tourSlice = createSlice({
     }
 })
 
-export const { setTours, filterTours, resetFilteredTours, filterToursBySearch, addReview, setReview ,deleteReview} = tourSlice.actions;
+export const { setTours,setCurrentTourId, filterTours, resetFilteredTours, filterToursBySearch, addReview, setReview ,deleteReview} = tourSlice.actions;
 export default tourSlice.reducer;

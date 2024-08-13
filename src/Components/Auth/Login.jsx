@@ -1,41 +1,28 @@
-import axios from 'axios'
-import { useFormik } from 'formik'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import * as yup from 'yup'
+import axios from 'axios';
+import { useFormik } from 'formik';
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
 import { toast, Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactLoading from 'react-loading';
-import { useDispatch } from 'react-redux'
-import { setLogin, setToken } from '../../Slices/AuthSlice'
+import { useDispatch } from 'react-redux';
+import { setLogin, setToken } from '../../Slices/AuthSlice';
 
 const LogInPage = () => {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
-
-    // Initialize navigate function for redirecting
+    const location = useLocation();
     const navigate = useNavigate();
 
-    // Function to handle click event to redirect to home page
-    const handleSignUpClick = () => {
-        navigate("/signup")
-    }
+    const handleSignUpClick = () => navigate("/signup");
+    const handleForgotPasswordClick = () => navigate("/forgotpassword");
 
-    // Function to handle click event to redirect to forgot password page
-    const handleForgotPasswordClick = () => {
-        navigate("/forgotpassword")
-    }
-
-    // Set up formik for form handling and validation
     const formik = useFormik({
-
-        // Initial values
         initialValues: {
             email: '',
             password: ''
         },
-
-        // Validations
         validationSchema: yup.object({
             email: yup.string()
                 .email('Invalid email')
@@ -43,77 +30,71 @@ const LogInPage = () => {
             password: yup.string()
                 .required("Password is required")
         }),
-
-        onSubmit: (values) => {   // Function to handle form submission
-
+        onSubmit: (values) => {
             const userDetails = {
                 email: values.email.trim(),
                 password: values.password.trim()
             }
 
             setLoading(true);
-            axios.post("/user/login", userDetails).then(res => {
-                setLoading(false);
-                if (res.data.message == "Password matched") {
-                    formik.resetForm();
-
-                    dispatch(setLogin(true));
-                    window.localStorage.setItem("isLoggedIn", true);
-
-                    dispatch(setToken(res.data.token));
-                    window.localStorage.setItem("token", res.data.token);
-
-                    navigate(-1);
-                    toast.success("Login successfull", {  // Notification
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        transition: Slide // Use Slide for right-side animation
-                    });
-                }
-                else if (res.data.message == "User not found") {
-                    toast.error("User not registered");  // Notification
-                }
-                else if (res.data.message == "User not activated") {
-                    toast.error("Account not activated");  // Notification
-                }
-                else {
-                    toast.error("Incorrect password"); // Notification
-                }
-
-            }).catch(res => {
-                setLoading(false);
-                toast.error("Login failed. Please try again later."); // Notification
-            })
+            axios.post("/user/login", userDetails)
+                .then(res => {
+                    setLoading(false);
+                    if (res.data.message === "Password matched") {
+                        formik.resetForm();
+                        dispatch(setLogin(true));
+                        const from = location.state?.from || "/";
+                        navigate(from, { replace: true });
+                        window.localStorage.setItem("isLoggedIn", true);
+                        dispatch(setToken(res.data.token));
+                        window.localStorage.setItem("token", res.data.token);
+                        navigate(from);
+                        toast.success("Login successful", {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            transition: Slide
+                        });
+                    } else if (res.data.message === "User not found") {
+                        toast.error("User not registered");
+                    } else if (res.data.message === "User not activated") {
+                        toast.error("Account not activated");
+                    } else {
+                        toast.error("Incorrect password");
+                    }
+                })
+                .catch(() => {
+                    setLoading(false);
+                    toast.error("Login failed. Please try again later.");
+                });
         }
-    })
+    });
+
     return (
         <div className='vh-100 bg d-flex justify-content-center align-items-center bg-color'>
             <div className="outer-container">
                 <p className='title'>Let's start</p>
                 <p className='text1'>Please login to continue</p>
-                <form action="" onSubmit={formik.handleSubmit}>
+                <form onSubmit={formik.handleSubmit}>
                     <div className="input-container">
-                        {
-                            formik.touched.email && formik.errors.email ?
-                                <div className='erro-msg'>{formik.errors.email}</div> : null
-                        }
+                        {formik.touched.email && formik.errors.email ? (
+                            <div className='erro-msg'>{formik.errors.email}</div>
+                        ) : null}
                         <i className='bx bx-envelope'></i>
                         <input
                             type="email"
                             placeholder='Email'
                             {...formik.getFieldProps("email")}
-                        ></input>
+                        />
                     </div>
                     <div className="input-container">
-                        {
-                            formik.touched.password && formik.errors.password ?
-                                <div className='erro-msg'>{formik.errors.password}</div> : null
-                        }
+                        {formik.touched.password && formik.errors.password ? (
+                            <div className='erro-msg'>{formik.errors.password}</div>
+                        ) : null}
                         <i className='bx bx-lock-alt'></i>
                         <input
                             type="password"
@@ -127,7 +108,6 @@ const LogInPage = () => {
                 <p className='d-flex justify-content-center mt-0 p-0 text2'><span onClick={handleForgotPasswordClick}>Forgot Password</span></p>
             </div>
 
-            {/* Toast container for displaying notifications */}
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -138,15 +118,12 @@ const LogInPage = () => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
+                transition={Slide}
             />
-            {
-                loading &&
-                <div className="loading-container">
-                    <ReactLoading type="spinningBubbles" color="#3F775A" />
-                </div>
-            }
-        </div>
-    )
-}
 
-export default LogInPage
+            {loading && <div className="loading-container"><ReactLoading type="spinningBubbles" color="#3F775A" /></div>}
+        </div>
+    );
+};
+
+export default LogInPage;

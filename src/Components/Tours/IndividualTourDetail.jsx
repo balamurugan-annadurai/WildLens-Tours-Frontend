@@ -16,13 +16,15 @@ import BookTour from './BookTour';
 const IndividualTourDetail = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { tourId } = location.state;
-    const { tours } = useSelector(state => state.tour);
+    // const { tourId } = location.state;
+    const { tours, currentTourId } = useSelector(state => state.tour);
+    const tourIdFromLocalStorage = window.localStorage.getItem("currentTourId");
+    const tourId = tourIdFromLocalStorage;
     const dispatch = useDispatch();
 
     const [loading, setLoading] = useState(false);
 
-    const { token,login } = useSelector(state => state.auth);
+    const { token, login } = useSelector(state => state.auth);
 
 
     const tour = tours.find(tour => tour._id === tourId);
@@ -49,7 +51,7 @@ const IndividualTourDetail = () => {
             setRating(0);
             setReviewBtnClicked(false);
             setLoading(true);
-            
+
             axios.post("/tour/addreview", { tourId, rating: values.rating, content: values.review }, {
                 headers: { Authorization: `Bearer ${token}` }
             }).then(res => {
@@ -80,6 +82,7 @@ const IndividualTourDetail = () => {
     }, [formik]);
 
     if (!tour) {
+        navigate("/alltours")
         return <div>Loading...</div>; // Handle loading or error state if tour is not found
     }
 
@@ -88,7 +91,7 @@ const IndividualTourDetail = () => {
             setReviewBtnClicked(!reviewBtnClicked);
         }
         else {
-            navigate("/login")
+            navigate("/login", { state: { from: window.location.pathname } })
         }
     }
 
@@ -97,7 +100,7 @@ const IndividualTourDetail = () => {
             setIsBooking(true);
         }
         else {
-            navigate("/login")
+            navigate("/login", { state: { from: window.location.pathname } });
         }
     }
 
@@ -119,7 +122,7 @@ const IndividualTourDetail = () => {
                                             <i className='bx bxs-leaf mx-2'></i>WildLens Tours
                                         </h1>
                                     </div>
-                                    <button className='return-btn' onClick={() => navigate(-1)}>
+                                    <button className='return-btn' onClick={() => navigate("/alltours")}>
                                         <i className='bx bxs-chevrons-left'></i>Back
                                     </button>
                                 </div>

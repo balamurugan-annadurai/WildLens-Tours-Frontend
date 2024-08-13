@@ -1,13 +1,20 @@
 import React from 'react'
 import "./Tours.css"
 import { useNavigate } from 'react-router-dom'
+import { setCurrentTourId } from '../../Slices/TourSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const TourCard = ({tour}) => {
     const navigate = useNavigate();
+    const { tours, currentTourId } = useSelector(state => state.tour);
+    const dispatch = useDispatch();
 
     const handleClick = () => {
         const tourId = tour._id;
-        navigate('/details', { state: { tourId } });
+        window.localStorage.setItem("currentTourId", tourId);
+        const tourIdFromLocalStorage = window.localStorage.getItem("currentTourId");
+        dispatch(setCurrentTourId(tourIdFromLocalStorage));
+        navigate('/details');
     }
 
     return (
