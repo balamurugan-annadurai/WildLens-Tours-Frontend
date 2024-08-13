@@ -45,43 +45,6 @@ const Contact = () => {
         }),
 
         onSubmit: (values) => {   // Function to handle form submission
-            setLoading(true);
-            axios.post("/login", values).then(res => {
-                setLoading(false);
-                if (res.data.message == "Password matched") {
-                    formik.resetForm();
-                    setLogin(true);
-                    window.localStorage.setItem("isLoggedIn", true);
-
-                    setToken(res.data.token);
-                    window.localStorage.setItem("token", res.data.token);
-
-                    navigate("/");
-                    toast.success("Login successfull", {  // Notification
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        transition: Slide // Use Slide for right-side animation
-                    });
-                }
-                else if (res.data.message == "User not found") {
-                    toast.error("User not registered");  // Notification
-                }
-                else if (res.data.message == "User not activated") {
-                    toast.error("Account not activated");  // Notification
-                }
-                else {
-                    toast.error("Incorrect password"); // Notification
-                }
-
-            }).catch(res => {
-                setLoading(false);
-                toast.error("Login failed. Please try again later."); // Notification
-            })
         }
     })
 
@@ -101,7 +64,7 @@ const Contact = () => {
                             <input
                                 type="text"
                                 placeholder='Name'
-                                {...formik.getFieldProps("Name")}
+                                {...formik.getFieldProps("name")}
                             ></input>
                         </div>
                         <div className="input-container">
@@ -125,7 +88,7 @@ const Contact = () => {
                             <textarea
                                 type="text"
                                 placeholder='Message'
-                                {...formik.getFieldProps("password")}
+                                {...formik.getFieldProps("message")}
                             />
                         </div>
                         <button className='custom-btn' type="submit">Submit</button>

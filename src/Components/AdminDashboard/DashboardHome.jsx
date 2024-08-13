@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 const DashboardHome = () => {
+    const { datas } = useSelector(state => state.dashboard);
     return (
         <>
             <div class="main">
@@ -8,22 +10,22 @@ const DashboardHome = () => {
                 <div class="cards">
                     <div class="card-details">
                         <h4 >Total user's</h4>
-                        <h5>1000</h5>
+                        <h5>{datas.totalUser}</h5>
                     </div>
 
                     <div class="card-details">
                         <h4 >Total booking's</h4>
-                        <h5>100</h5>
+                        <h5>{datas.totalBookings}</h5>
                     </div>
 
                     <div class="card-details">
                         <h4 >Tour's completed</h4>
-                        <h5>50</h5>
+                        <h5>{datas.completedTours}</h5>
                     </div>
 
                     <div class="card-details">
                         <h4 >Upcoming tour's</h4>
-                        <h5>10</h5>
+                        <h5>{datas.pendingTours}</h5>
                     </div>
                 </div>
 

@@ -1,27 +1,19 @@
 import React from 'react'
 import UsersCard from './UsersCard'
+import { useSelector } from 'react-redux';
 
 const DashboardUsers = () => {
+    const { datas } = useSelector(state => state.dashboard);
     return (
         <>
             <div class="main">
 
                 <div className="cards">
-                    <UsersCard />
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
-                    <UsersCard/>
+                    {
+                        datas.users.map(user => (
+                            <UsersCard user={user}/>
+                        ))
+                    }
                 </div>
 
             </div>

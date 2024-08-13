@@ -26,6 +26,8 @@ import PreviousBookings from './Components/Auth/PreviousBookings';
 import UpcomingBookings from './Components/Auth/UpcomingBookings';
 import ProtectedRoute from './Components/AdminDashboard/ProtectedRoute'
 import BookTour from './Components/Tours/BookTour'
+import { setDatas } from './Slices/DashboardSlice'
+import DashboardMessages from './Components/AdminDashboard/DashboardMessages'
 
 
 
@@ -62,6 +64,23 @@ const App = () => {
       }
     })
 
+    if (login) {
+      setLoading(true);
+      axios.get("/user/dashboarddatas", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(res => {
+        try {
+          dispatch(setDatas(res.data.datas));
+          setLoading(false);
+        } catch (error) {
+          console.log(error);
+          setLoading(false);
+        }
+      })
+    }
+
   }, [login])
 
   const getRedirectElement = () => {
@@ -71,7 +90,7 @@ const App = () => {
     return <Home />;
   };
 
-  
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -150,6 +169,10 @@ const App = () => {
         {
           path: 'bookings',
           element: <DashboardBookings />
+        },
+        {
+          path: 'messages',
+          element: <DashboardMessages />
         }
 
       ]

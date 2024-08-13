@@ -49,13 +49,14 @@ const IndividualTourDetail = () => {
             setRating(0);
             setReviewBtnClicked(false);
             setLoading(true);
+            
             axios.post("/tour/addreview", { tourId, rating: values.rating, content: values.review }, {
                 headers: { Authorization: `Bearer ${token}` }
             }).then(res => {
                 if (res.data.message === "Review added") {
                     dispatch(addReview({ tourId, review: { ...res.data.newReview, likes: 0, dislikes: 0 } }));
                     setLoading(false);
-                    toast.success("Review added", {
+                    toast.success("Email sent successfully", {  // Notification
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: false,
@@ -63,7 +64,7 @@ const IndividualTourDetail = () => {
                         pauseOnHover: true,
                         draggable: true,
                         progress: undefined,
-                        transition: Slide
+                        transition: Slide // Use Slide for right-side animation
                     });
                 }
             }).catch(error => {

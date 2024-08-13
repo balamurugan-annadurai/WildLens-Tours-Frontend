@@ -292,6 +292,7 @@ textarea:focus {
 @media (max-width:500px) {
     .cards {
         grid-template-columns: 1fr;
+        padding: 5px 0;
     }
 
     .topbar {

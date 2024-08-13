@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Sections.css"
-import video from "../../assets/intro-video.mp4"
+import video from "../../assets/bg-video.mp4"
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

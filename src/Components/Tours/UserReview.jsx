@@ -160,6 +160,7 @@ const UserReview = ({ review, tourId, setLoading }) => {
             dispatch(setReview({ tourId, content, reviewId }));
             setLoading(false);
 
+
         } catch (error) {
             console.error('Error updating review content:', error);
             // Optionally, revert the local state update if the API call fails
@@ -223,17 +224,6 @@ const UserReview = ({ review, tourId, setLoading }) => {
                     <button onClick={handleDelete} type="submit" className='delete'>Delete</button>
                 </div>
             }
-            <div className="add-comment mt-3">
-                <form action="">
-                    <textarea type="text" className='' placeholder='Add your comments here ' />
-                    <div className='comment-btn-container'>
-                        <button type="submit" className='return-btn custom'>Add Comment</button>
-                        <p onClick={() => setShowAllComments(!showAllComments)}>
-                            {!showAllComments ? "Show all comments" : "Hide all comments"}
-                        </p>
-                    </div>
-                </form>
-            </div>
             <ToastContainer
                 position="top-right"
                 autoClose={5000}

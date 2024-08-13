@@ -135,7 +135,7 @@ p {
 }
 
 .loading-container {
-    z-index: 1000;
+    z-index: 10000;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.3);
     min-height: 100vh;

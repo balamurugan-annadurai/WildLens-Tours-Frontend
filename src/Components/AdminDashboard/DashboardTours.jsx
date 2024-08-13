@@ -9,7 +9,7 @@ const DashboardTours = () => {
             <div className="main">
                 <div className="tours">
                     <h3>Tours</h3>
-                    <button className='return-btn custom'>Add Tour</button>
+                    {/* <button className='return-btn custom'>Add Tour</button> */}
                     <div className="row mt-2">
                         {
                             tours.map(tour => (

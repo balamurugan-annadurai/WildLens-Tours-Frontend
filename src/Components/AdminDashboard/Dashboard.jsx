@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import "./Dashboard.css"
 import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLogin } from '../../Slices/AuthSlice';
+import ReactLoading from 'react-loading';
 const Dashboard = () => {
 
     const [activeLink, SetActivelink] = useState(true);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
+    const { datas, isLoading } = useSelector(state => state.dashboard);
+    
     const handleLogout = () => {
         localStorage.clear();
         dispatch(setLogin(false));
@@ -20,6 +22,11 @@ const Dashboard = () => {
         <>
             <div class="dashboard">
 
+                {isLoading && (
+                    <div className="loading-container">
+                        <ReactLoading type="spinningBubbles" color="#3F775A" />
+                    </div>
+                )}
                 <div class="topbar">
                     <div className="container inner-header">
                         <div className="logo">
@@ -96,7 +103,7 @@ const Dashboard = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="home"
+                            <NavLink to="messages"
                                 className={({ isActive }) => {
 
                                     if (isActive) {
