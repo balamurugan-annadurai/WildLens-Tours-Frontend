@@ -29,15 +29,6 @@ const DashboardHome = () => {
                     </div>
                 </div>
 
-                <div className="charts">
-                    <div className="chart">
-                        <h4>Earnings (past 12 months)</h4>
-                    </div>
-                    <div className="chart" id="doughnut-chart">
-                        <h4>Employees</h4>
-                    </div>
-                </div>
-
             </div>
         </>
     )

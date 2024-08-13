@@ -6,11 +6,11 @@ const BookingsCard = () => {
             <div className="user-details">
                 <div className="detail-item">
                     <span className="label">Customer name:</span>
-                    <span className="value">Balamurugan Ajhjh</span>
+                    <span className="value">Balamurugan A</span>
                 </div>
                 <div className="detail-item">
                     <span className="label">Email Id:</span>
-                    <span className="value">bala@gmail.com</span>
+                    <span className="value">balarevolver@gmail.com</span>
                 </div>
                 <div className="detail-item">
                     <span className="label">Travel to:</span>
@@ -18,22 +18,12 @@ const BookingsCard = () => {
                 </div>
                 <div className="detail-item">
                     <span className="label">Number of passengers:</span>
-                    <span className="value">20</span>
+                    <span className="value">5</span>
                 </div>
                 <div className="detail-item">
                     <span className="label">Number of days:</span>
                     <span className="value">7 days</span>
                 </div>
-                <div className="detail-item">
-                    <span className="label">Start date:</span>
-                    <span className="value">xxxxxx</span>
-                </div>
-                <div className="detail-item">
-                    <span className="label">End date:</span>
-                    <span className="value">cccccc</span>
-                </div>
-
-                <button className='return-btn custom d-flex justify-content-center'>Contact Customer</button>
             </div>
         </>
 
