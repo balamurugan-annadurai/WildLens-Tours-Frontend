@@ -39,7 +39,7 @@ const UserProfile = () => {
                                     <div className="logo">
                                         <h1 className='d-flex align-items-center'><i className='bx bxs-leaf mx-2'></i>WildLens Tours</h1>
                                     </div>
-                                    <button className='return-btn' onClick={() => navigate("/")}><i class='bx bxs-chevrons-left' ></i>Home</button>
+                                    <button className='return-btn' onClick={() => navigate("/")}><i className='bx bxs-chevrons-left' ></i>Home</button>
                                 </div>
                             </div>
 

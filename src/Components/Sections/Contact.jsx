@@ -71,7 +71,7 @@ const Contact = () => {
                                 formik.touched.name && formik.errors.name ?
                                     <div className='erro-msg'>{formik.errors.name}</div> : null
                             }
-                            <i class='bx bx-user' ></i>
+                            <i className='bx bx-user' ></i>
                             <input
                                 type="text"
                                 placeholder='Name'
@@ -95,7 +95,7 @@ const Contact = () => {
                                 formik.touched.message && formik.errors.message ?
                                     <div className='erro-msg'>{formik.errors.message}</div> : null
                             }
-                            <i class='bx bx-message-dots' ></i>
+                            <i className='bx bx-message-dots' ></i>
                             <textarea
                                 type="text"
                                 placeholder='Message'

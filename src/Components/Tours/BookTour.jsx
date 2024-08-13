@@ -111,7 +111,7 @@ const BookTour = ({ tour, setIsBooking }) => {
                                 formik.touched.name && formik.errors.name ?
                                     <div className='erro-msg'>{formik.errors.name}</div> : null
                             }
-                            <i class='bx bx-user'></i>
+                            <i className='bx bx-user'></i>
                             <input
                                 type="name"
                                 placeholder='Name'
@@ -135,7 +135,7 @@ const BookTour = ({ tour, setIsBooking }) => {
                                 formik.touched.mobileNo && formik.errors.mobileNo ?
                                     <div className='erro-msg'>{formik.errors.mobileNo}</div> : null
                             }
-                            <i class='bx bx-phone-call' ></i>
+                            <i className='bx bx-phone-call' ></i>
                             <input
                                 type="text"
                                 placeholder='Mobile no'
@@ -147,7 +147,7 @@ const BookTour = ({ tour, setIsBooking }) => {
                                 formik.touched.companions && formik.errors.companions ?
                                     <div className='erro-msg'>{formik.errors.companions}</div> : null
                             }
-                            <i class='bx bx-user-plus' ></i>
+                            <i className='bx bx-user-plus' ></i>
                             <input
                                 type="text"
                                 placeholder='Companions'

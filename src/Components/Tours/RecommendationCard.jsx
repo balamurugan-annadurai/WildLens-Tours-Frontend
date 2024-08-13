@@ -14,7 +14,7 @@ const TourCard = ({ tour}) => {
             <div className="inner-card-container">
                 <img src={tour.img} alt="" />
                 <h4>{tour.name}</h4>
-                <p><i class='bx bx-current-location'></i>{tour.country}</p>
+                <p><i className='bx bx-current-location'></i>{tour.country}</p>
                 <div className="card-price">
                     <p>₹ {tour.price} (<span className='days'>{tour.duration}</span>)</p>
                 </div>

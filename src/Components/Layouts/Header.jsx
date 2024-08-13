@@ -96,7 +96,7 @@ const Header = () => {
                 <nav>
                     <div className="navbar">
                         <div className="logo">
-                            <h1 className='d-flex align-items-center'><i class='bx bxs-leaf mx-2'></i>WildLens Tours</h1>
+                            <h1 className='d-flex align-items-center'><i className='bx bxs-leaf mx-2'></i>WildLens Tours</h1>
                         </div>
                         <ul>
                             <li><a href="#" className='onfocus-design white'>Home</a></li>

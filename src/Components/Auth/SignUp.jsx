@@ -99,7 +99,7 @@ const SignUp = () => {
                                         formik.touched.firstName && formik.errors.firstName ?
                                             <div className='erro-msg'>{formik.errors.firstName}</div> : null
                                     }
-                                    <i class='bx bx-user' ></i>
+                                    <i className='bx bx-user' ></i>
                                     <input
                                         type="text"
                                         placeholder='First name'
@@ -111,7 +111,7 @@ const SignUp = () => {
                                         formik.touched.lastName && formik.errors.lastName ?
                                             <div className='erro-msg'>{formik.errors.lastName}</div> : null
                                     }
-                                    <i class='bx bx-user' ></i>
+                                    <i className='bx bx-user' ></i>
                                     <input
                                         type="text"
                                         placeholder='Last name'

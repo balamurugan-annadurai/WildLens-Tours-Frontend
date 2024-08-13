@@ -6,7 +6,7 @@ const DashboardUsers = () => {
     const { datas } = useSelector(state => state.dashboard);
     return (
         <>
-            <div class="main">
+            <div className="main">
 
                 <div className="cards">
                     {

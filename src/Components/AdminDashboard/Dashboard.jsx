@@ -27,12 +27,12 @@ const Dashboard = () => {
                         <ReactLoading type="spinningBubbles" color="#3F775A" />
                     </div>
                 )}
-                <div class="topbar">
+                <div className="topbar">
                     <div className="container inner-header">
                         <div className="logo">
                             <h1 className='d-flex align-items-center'><i className='bx bxs-leaf mx-2'></i>WildLens Tours</h1>
                         </div>
-                        <button className='return-btn' onClick={handleLogout}><i class='bx bxs-chevrons-left' ></i>Logout</button>
+                        <button className='return-btn' onClick={handleLogout}><i className='bx bxs-chevrons-left' ></i>Logout</button>
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@ const Dashboard = () => {
                             <NavLink to="home"
                                 className={activeLink ? "active" : ""}
                             >
-                                <i class='bx bxs-home' ></i>
+                                <i className='bx bxs-home' ></i>
                                 <div>Home</div>
                             </NavLink>
                         </li>
@@ -56,7 +56,7 @@ const Dashboard = () => {
                                     return isActive ? 'active' : ''
                                 }}
                             >
-                                <i class='bx bxs-user'></i>
+                                <i className='bx bxs-user'></i>
                                 <div>Users</div>
                             </NavLink>
                         </li>
@@ -70,7 +70,7 @@ const Dashboard = () => {
                                     return isActive ? 'active' : ''
                                 }}
                             >
-                                <i class='bx bxs-envelope' ></i>
+                                <i className='bx bxs-envelope' ></i>
                                 <div>Marketing</div>
                             </NavLink>
                         </li>
@@ -84,7 +84,7 @@ const Dashboard = () => {
                                     return isActive ? 'active' : ''
                                 }}
                             >
-                                <i class='bx bxs-plane-alt' ></i>
+                                <i className='bx bxs-plane-alt' ></i>
                                 <div>Tours</div>
                             </NavLink>
                         </li>
@@ -98,7 +98,7 @@ const Dashboard = () => {
                                     return isActive ? 'active' : ''
                                 }}
                             >
-                                <i class='bx bxs-book-alt'></i>
+                                <i className='bx bxs-book-alt'></i>
                                 <div>Bookings</div>
                             </NavLink>
                         </li>
@@ -112,7 +112,7 @@ const Dashboard = () => {
                                     return isActive ? 'active' : ''
                                 }}
                             >
-                                <i class='bx bxs-message-dots' ></i>
+                                <i className='bx bxs-message-dots' ></i>
                                 <div>Messages</div>
                             </NavLink>
                         </li>

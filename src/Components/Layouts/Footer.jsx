@@ -11,9 +11,9 @@ const Footer = () => {
                         <h1 className='d-flex align-items-center'><i className='bx bxs-leaf mx-2'></i>WildLens Tours</h1>
                     </div>
                     <div className="social-icons">
-                        <i class='bx bxl-facebook' ></i>
-                        <i class='bx bxl-twitter' ></i>
-                        <i class='bx bxl-linkedin' ></i>
+                        <i className='bx bxl-facebook' ></i>
+                        <i className='bx bxl-twitter' ></i>
+                        <i className='bx bxl-linkedin' ></i>
                     </div>
                 </div>
 
