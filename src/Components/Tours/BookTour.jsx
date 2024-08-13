@@ -45,6 +45,8 @@ const BookTour = ({ tour, setIsBooking }) => {
             const paymentObject = new window.Razorpay(options);
             paymentObject.open();
         } catch (error) {
+            setLoading(false);
+            toast.error("Please try again later.");
             console.error('Error creating Razorpay order:', error);
         }
     };
