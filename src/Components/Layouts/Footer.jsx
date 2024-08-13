@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Layout.css"
 import '../Sections/Sections.css'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -20,10 +21,10 @@ const Footer = () => {
                 <div className="info-container custom-ft">
                     <h4 className='gree-secondary'>Information</h4>
                     <ul>
-                        <li><a href="#" className='green'>Home</a></li>
-                        <li><a href="#about" className='green'>About</a></li>
-                        <li><a href="" className='green'>Explore</a></li>
-                        <li><a href="#contact" className='green'>Contact</a></li>
+                        <li><Link to="/" className='green'>Home</Link></li>
+                        <li><Link to="/#about" className='green'>About</Link></li>
+                        <li><Link to="/alltours" className='green'>Explore</Link></li>
+                        <li><Link to="/#contact" className='green'>Contact</Link></li>
                     </ul>
                 </div>
 

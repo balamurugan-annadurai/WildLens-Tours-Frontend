@@ -21,6 +21,7 @@ const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to top when component mounts
         const handleClick = (event) => {
             aNodeList.forEach(a => a.classList.remove("onfocus-design"));
             event.currentTarget.classList.add("onfocus-design");
