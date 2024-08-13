@@ -1,4 +1,3 @@
-// StarRating.js
 import React, { useState } from 'react';
 
 const StarRating = ({ maxStars = 5, rating = 0, onChange }) => {
@@ -7,9 +6,9 @@ const StarRating = ({ maxStars = 5, rating = 0, onChange }) => {
     const handleClick = (index) => {
         const newRating = index + 1;
         if (typeof onChange === 'function') {
-            onChange(newRating); // Pass the new rating to the parent component
+            onChange(newRating); 
         }
-        console.log('Rating clicked:', newRating); // Log the rating change
+        console.log('Rating clicked:', newRating); 
     };
 
     const handleMouseEnter = (index) => {
@@ -30,7 +29,7 @@ const StarRating = ({ maxStars = 5, rating = 0, onChange }) => {
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                 >
-                    &#9733; {/* Star character */}
+                    &#9733; 
                 </span>
             ))}
         </div>

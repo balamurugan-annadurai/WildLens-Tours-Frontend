@@ -108,9 +108,7 @@
 
 .sidebar ul li a.active {
     background-color: #f0f0f0;
-    /* Change this to your desired background color */
     color: #28523E;
-    /* Change this to your desired text color */
     transition: background-color .8s ease;
     width: 92%;
     border-radius: 10px;
@@ -215,19 +213,15 @@ textarea:focus {
 .detail-item {
     display: flex;
     justify-content: space-between;
-    /* Space between label and value */
     align-items: center;
-    /* Center items vertically */
 }
 
 .detail-item strong {
     font-weight: bold;
-    /* Bold for labels */
 }
 
 .detail-item span {
     color: #333;
-    /* Darker color for values */
 }
 
 .user-details {
@@ -245,25 +239,19 @@ textarea:focus {
 .detail-item {
     display: flex;
     justify-content: space-between;
-    /* Space between label and value */
     align-items: center;
-    /* Center items vertically */
     font-size: 14px;
     border-bottom: 1px solid #d1d1d1;
-    /* Adjust font size as needed */
 }
 
 .detail-item .label {
     font-weight: bold;
-    /* Bold for labels */
     color: #28523E;
-    /* Darker color for labels */
 }
 
 .detail-item .value {
     font-weight: 600;
     color: #555;
-    /* Slightly lighter color for values */
 }
 
 /* Responsive */
@@ -294,7 +282,11 @@ textarea:focus {
         grid-template-columns: 1fr;
         padding: 5px 0;
     }
-
+    .main {
+        left: 75px;
+        min-width: 100%;
+        max-width: calc(100% - 75px);
+    }
     .topbar {
         grid-template-columns: 1fr 5fr .2fr .5fr;
     }

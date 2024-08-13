@@ -4,8 +4,8 @@ const tourSlice = createSlice({
     name: "tours",
     initialState: {
         tours: [],
-        filteredTours: [], // Filtered tours
-        currentTourId: null,  // Add this line
+        filteredTours: [], 
+        currentTourId: null,  
     },
     reducers: {
         setTours: (state, action) => {
@@ -13,7 +13,7 @@ const tourSlice = createSlice({
             state.filteredTours = action.payload;
         },
         setCurrentTourId(state, action) {
-            state.currentTourId = action.payload;  // Update this line
+            state.currentTourId = action.payload;  
         },
         resetFilteredTours: (state, action) => {
             state.filteredTours = state.tours;
@@ -49,14 +49,14 @@ const tourSlice = createSlice({
         setReview: (state, action) => {
             const { tourId, content, reviewId } = action.payload;
         
-            // Find the tour by its ID
+            
             const tour = state.tours.find(tour => tour._id === tourId);
             if (tour) {
-                // Find the review by its ID
+               
                 const review = tour.reviews.find(review => review._id === reviewId);
         
                 if (review) {
-                    // Update the review content
+                   
                     review.content = content;
                 } else {
                     console.error(`Review with ID ${reviewId} not found in tour ${tourId}`);
@@ -68,11 +68,11 @@ const tourSlice = createSlice({
         deleteReview: (state, action) => {
             const { tourId, reviewId } = action.payload;
 
-            // Find the tour by its ID
+            
             const tour = state.tours.find(tour => tour._id === tourId);
             
             if (tour) {
-                // Remove the review from the reviews array
+                
                 const initialLength = tour.reviews.length;
                 tour.reviews = tour.reviews.filter(review => review._id !== reviewId);
 

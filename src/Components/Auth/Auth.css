@@ -212,19 +212,19 @@ p {
 
 .bookings_list a::before {
     content: '';
-    height: 3.5px; /* Height of the underline */
-    width: 0; /* Start with no width */
-    background-color: #3F775A; /* Color of the underline */
-    position: absolute; /* Absolute positioning */
-    left: 0; /* Align to the left edge */
-    bottom: -5px; /* Position it slightly below the text */
-    transition: width 0.6s ease, background-color 0.3s ease; /* Smooth transition for width and color */
-    border-radius: 25px; /* Rounded edges for the underline */
+    height: 3.5px; 
+    width: 0; 
+    background-color: #3F775A; 
+    position: absolute; 
+    left: 0; 
+    bottom: -5px; 
+    transition: width 0.6s ease, background-color 0.3s ease; 
+    border-radius: 25px; 
 }
 
-/* Active state styling */
+
 .bookings_list a.active::before {
-    width: 75%; /* Full width of the NavLink when active */
+    width: 75%; 
 }
 
 @media screen and (max-width:445px){

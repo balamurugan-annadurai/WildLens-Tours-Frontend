@@ -12,7 +12,7 @@ const UserReview = ({ review, tourId, setLoading }) => {
     const { login, userDetails, token } = useSelector(state => state.auth);
     const navigate = useNavigate();
 
-    // Ensure userDetails and userDetails.user are defined
+    
     const userId = userDetails?.user?._id;
     const reviewId = review._id;
 
@@ -66,7 +66,7 @@ const UserReview = ({ review, tourId, setLoading }) => {
                 });
             } catch (error) {
                 console.error('Error updating like:', error);
-                // Optionally, revert the local state update if the API call fails
+                
             }
         } else {
             navigate("/login");
@@ -104,7 +104,7 @@ const UserReview = ({ review, tourId, setLoading }) => {
                 });
             } catch (error) {
                 console.error('Error updating dislike:', error);
-                // Optionally, revert the local state update if the API call fails
+                
             }
         } else {
             navigate("/login");
@@ -116,7 +116,7 @@ const UserReview = ({ review, tourId, setLoading }) => {
     const handleDelete = async () => {
         setLoading(true);
         try {
-            // Make the API call first
+            
             const res = await axios.delete(`/tour/reviews/${reviewId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -135,24 +135,20 @@ const UserReview = ({ review, tourId, setLoading }) => {
                     transition: Slide // Use Slide for right-side animation
                 });
             }
-            // If the API call is successful, then update the Redux state
+            
         } catch (error) {
             console.error('Error deleting review:', error);
-            // Optionally, you can show an error message to the user or handle the error state
-            // For example:
-            // alert('Failed to delete review. Please try again.');
+
         }
     };
     const handleSave = async () => {
         setIsEditing(false)
         setLoading(true);
         try {
-            // Dispatch action to update review content in the Redux store
-
-            // Make sure to pass all required fields if the backend expects them
+            
             const res = await axios.patch("/tour/savecontent", {
                 reviewId,
-                content // Only include content here if that's what you're updating
+                content 
             }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -163,7 +159,7 @@ const UserReview = ({ review, tourId, setLoading }) => {
 
         } catch (error) {
             console.error('Error updating review content:', error);
-            // Optionally, revert the local state update if the API call fails
+            
         }
     }
 
@@ -238,7 +234,7 @@ const UserReview = ({ review, tourId, setLoading }) => {
             {
                 showAllComments &&
                 <div className="all-comments mt-3">
-                    {/* Replace these static comments with actual comments */}
+                    
                     <div className="comment">
                         <h4>user name</h4>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere aperiam, id doloribus aliquid sunt rem dolor molestiae, pla</p>

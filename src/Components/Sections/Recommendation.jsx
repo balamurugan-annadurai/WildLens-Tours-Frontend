@@ -15,7 +15,7 @@ const Recommendation = () => {
     let previousBookings = [];
     let recommendedTours = tours;
 
-    // Ensure userDetails and bookings are properly initialized
+    
     if (login && userDetails && Array.isArray(userDetails.bookings)) {
         previousBookings = userDetails.bookings.filter(booking => (
             booking.status === "completed"

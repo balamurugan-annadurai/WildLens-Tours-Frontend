@@ -22,14 +22,14 @@ const BookTour = ({ tour, setIsBooking }) => {
             setLoading(false);
 
             const options = {
-                key: 'rzp_test_gijcvzVIahNMp1', // Replace with your Razorpay public key
+                key: 'rzp_test_gijcvzVIahNMp1', 
                 amount: orderAmount,
                 currency: currency,
                 name: 'WildLens Tours',
                 description: 'Tour booking',
                 order_id: id,
                 handler: async function (response) {
-                    // Handle the payment success here
+                    
                     console.log('Payment successful', response);
                 },
                 prefill: {

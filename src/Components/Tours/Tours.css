@@ -230,16 +230,16 @@ ul li {
    border-radius: 100%;
 }
 
-/* StarRating.css */
+
 .star-rating {
     display: inline-flex;
-    font-size: 3rem; /* Adjust the size as needed */
-    color: #d3d3d3; /* Default color for empty stars */
+    font-size: 3rem; 
+    color: #d3d3d3; 
     cursor: pointer;
 }
 
 .star-rating .star.filled {
-    color: gold; /* Color for filled stars */
+    color: gold; 
 }
 
 .star-rating .star {
@@ -267,13 +267,13 @@ ul li {
 }
 
 .like-button.active {
-    background-color: #d4edda; /* Light green for active state */
-    color: #155724; /* Dark green text */
+    background-color: #d4edda; 
+    color: #155724; 
 }
 
 .dislike-button.active {
-    background-color: #f8d7da; /* Light red for active state */
-    color: #721c24; /* Dark red text */
+    background-color: #f8d7da;
+    color: #721c24; 
 }
 .comment-btn-container{
     display: flex;
