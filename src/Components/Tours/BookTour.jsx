@@ -115,7 +115,7 @@ const BookTour = ({ tour, setIsBooking }) => {
                             }
                             <i className='bx bx-user'></i>
                             <input
-                                type="name"
+                                type="text"
                                 placeholder='Name'
                                 {...formik.getFieldProps("name")}
                             ></input>
