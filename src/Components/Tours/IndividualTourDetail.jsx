@@ -9,20 +9,38 @@ import axios from 'axios';
 import ReactLoading from 'react-loading';
 import { toast, Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addReview } from '../../Slices/TourSlice';
+import { addReview, setTours } from '../../Slices/TourSlice';
 import Footer from '../Layouts/Footer';
 import BookTour from './BookTour';
 
 const IndividualTourDetail = () => {
+
+    const [loading, setLoading] = useState(true);
+    const tourIdFromLocalStorage = window.localStorage.getItem("currentTourId");
+    const tourId = tourIdFromLocalStorage;
+
+    useEffect(() => {
+        axios.get("/tour/alltours").then(res => {
+            try {
+                dispatch(setTours(res.data.tours));
+                setLoading(false);
+
+            } catch (error) {
+                setLoading(false);
+                console.log(error);
+            }
+        })
+        window.scrollTo(0, 0); // Scroll to top when component mounts
+    }, [tourId]);
+
+
     const navigate = useNavigate();
     const location = useLocation();
     // const { tourId } = location.state;
     const { tours, currentTourId } = useSelector(state => state.tour);
-    const tourIdFromLocalStorage = window.localStorage.getItem("currentTourId");
-    const tourId = tourIdFromLocalStorage;
+    
     const dispatch = useDispatch();
 
-    const [loading, setLoading] = useState(false);
 
     const { token, login } = useSelector(state => state.auth);
 
@@ -33,9 +51,7 @@ const IndividualTourDetail = () => {
     const [reviewBtnClicked, setReviewBtnClicked] = useState(false);
     const [isBooking, setIsBooking] = useState(false);
 
-    useEffect(() => {
-        window.scrollTo(0, 0); // Scroll to top when component mounts
-    }, [tourId]);
+
 
     const formik = useFormik({
         initialValues: {

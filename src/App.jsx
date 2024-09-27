@@ -28,7 +28,7 @@ import ProtectedRoute from './Components/AdminDashboard/ProtectedRoute'
 import BookTour from './Components/Tours/BookTour'
 import { setDatas } from './Slices/DashboardSlice'
 import DashboardMessages from './Components/AdminDashboard/DashboardMessages'
-
+import toursData from "../tours.json"
 
 
 const App = () => {
@@ -48,21 +48,22 @@ const App = () => {
     if (login) {
       axios.post("/booking/getuserdetails", { token }).then(res => {
         dispatch(setUserDetails(res.data.personalDetails));
-
       }).catch(error => {
         console.error('Error fetching user details:', error);
       });
     }
 
-    axios.get("/tour/alltours").then(res => {
-      try {
-        dispatch(setTours(res.data.tours));
-        setLoading(false);
+    // axios.get("/tour/alltours").then(res => {
+    //   try {
+    //     dispatch(setTours(res.data.tours));
+    //     setLoading(false);
 
-      } catch (error) {
-        console.log(error);
-      }
-    })
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // })
+    dispatch(setTours(toursData));
+    setLoading(false);
 
     if (login) {
       setLoading(true);
@@ -73,12 +74,13 @@ const App = () => {
       }).then(res => {
         try {
           dispatch(setDatas(res.data.datas));
-          setLoading(false);
         } catch (error) {
           console.log(error);
-          setLoading(false);
         }
       })
+        .finally(() => {
+          setLoading(false); // Ensure loading is set to false regardless of the outcome
+        });
     }
 
   }, [login])

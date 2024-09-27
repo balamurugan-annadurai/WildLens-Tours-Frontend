@@ -21,9 +21,19 @@ const UserProfile = () => {
     };
 
     useEffect(() => {
+
+        if (login) {
+            axios.post("/booking/getuserdetails", { token }).then(res => {
+                dispatch(setUserDetails(res.data.personalDetails));
+
+            }).catch(error => {
+                console.error('Error fetching user details:', error);
+            });
+        }
+
         window.scrollTo(0, 0); // Scroll to top when component mounts
-    })
-    
+    }, [login])
+
     return (
         <>
             {
