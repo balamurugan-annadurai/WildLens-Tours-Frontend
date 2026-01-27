@@ -29,7 +29,7 @@ const Header = () => {
                 setIsScroll(true);
             }
             else {
-                setIsScroll(false);
+                setIsScroll(false); // cmd
             }
         }
 
