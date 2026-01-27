@@ -16,7 +16,7 @@ const Header = () => {
 
         const handleMenuClick = () => {
             const menuClass = document.querySelector(".mobile-navbar-list");
-            menuClass.classList.add("left");
+            menuClass.classList.add("left"); //test
         }
 
         const handleCloseClick = () => {
