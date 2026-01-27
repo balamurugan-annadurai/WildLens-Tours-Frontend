@@ -11,7 +11,7 @@ const Header = () => {
     useEffect(() => {
         const handleClick = (event) => {
             aNodeList.forEach(a => a.classList.remove("onfocus-design"));
-            event.currentTarget.classList.add("onfocus-design");
+            event.currentTarget.classList.add("onfocus-design"); // test
         }
 
         const handleMenuClick = () => {
@@ -82,14 +82,14 @@ const Header = () => {
     return (
         <>
             <div className="mobile-navbar-list">
-            
+
                 <ul>
                     <li><a href="#" className='white'>Home</a></li>
                     <li><a href="#about" className='white'>About</a></li>
                     <li><a href="#contact" className='white'>Contact</a></li>
                 </ul>
                 <i className='bx bx-x close-icon'></i>
-                
+
             </div>
 
             <header className={isScroll ? "scrolled" : ""}>
@@ -117,7 +117,7 @@ const Header = () => {
                     </div>
                 </nav>
             </header>
-            
+
         </>
     )
 }
